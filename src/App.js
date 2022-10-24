@@ -1,9 +1,6 @@
-// import logo from './logo.svg';
 import './App.css';
 import SignIn from './components/SignIn';
 import { useState, useEffect } from 'react'
-// import MakeTasks from './components/MakeTasks'
-// import TasksContainer from './components/TasksContainer';
 import Search from './components/Search';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
