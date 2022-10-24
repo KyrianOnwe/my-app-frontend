@@ -12,9 +12,7 @@ function Search({ show }) {
   }
 
   function subSearch(e){
-    console.log(user)
     e.preventDefault()
-    console.log("ok")
     fetch(`http://localhost:9292/find_by_name/${user}`)
        .then((r) => r.json())
        .then((s) => setUtodos(s))
