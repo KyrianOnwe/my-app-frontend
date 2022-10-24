@@ -30,35 +30,16 @@ function Tasks({ id, task, dd, ab, status, us, uid, delT, role, comp, handcom, u
       .then((r) => r.json())
       .then((data) => handcom(id, data))
   }
-
-  // const userName = us.map((u) => u.name)
-  // let options = []
-  // options = [...userName.map((un) => {
-  //   return {value: un.toLowerCase(), label: un}
-  // })]
   let setUser = {}
-//   console.log(uid)
-  // console.log(us)
   setUser = us.find((u) => u.id === uid) 
-  // console.log(setUser.name)
-
+  
   const userSet = setUser.name
-  // console.log(userSet)
-
 
   const [assigned, setAssigned] = useState(`${userSet}`)
 
   function handleChange(e){
     setAssigned(e.target.value)
   }
-
-  
-
-  // function useSetAssigned(x){
-  //   const daUser = us.find((u) => u.name === x)
-  //   const daId = daUser.id
-    
-  // }
 
   function handleStatusSubmit(e){
     e.preventDefault()
