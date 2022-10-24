@@ -24,7 +24,6 @@ function TasksContainer({ tds, show, us, setT, role, cu, uui, handcom }) {
     upd.status = stat
   }
 
-  // console.log(us)
   return (
     <div className={!show ? "hidden" : "tasks-container"}>
          <table>
