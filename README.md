@@ -39,6 +39,6 @@ If an error occurs while running `rake server`, please run `bundle exec rake ser
 
 
 ## License & Copyright:
- Copyright 2022 Kyrian Onwe, Flatiron School.  
+ Copyright (c) 2022 Kyrian Onwe, Flatiron School.  
  
  Licensed under the [MIT LICENSE](LICENSE).
