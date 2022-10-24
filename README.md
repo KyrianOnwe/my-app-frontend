@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# The Flatiron Horror Database
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app has been created for use with a team where accountability for performance of tasks is crucial.  Adminsistrators and higher can create, reassign, and delete tasks.  Users lower than admninistrator can read others' tasks, read and update their own tasks.  The app keeps track of the current user and automatically inputs that user's id, stamping them as responsible for creation and management of the tasks.
+## Requirements:
+### Backend:
+- Gemfile included, along with enviornment set up files.
+- Run `bundle install`
 
-## Available Scripts
+### Frontend:
+-  Be sure to start the backend server prior to starting the frontend UI to avoid errors.
 
-In the project directory, you can run:
+## How to use:
 
-### `npm start`
+1.  From a terminal, fork and clone the backend server from https://github.com/KyrianOnwe/phase-3-project.  
+2.  Migrate to the directory that stores the cloned backend repo and run `bundle install`
+3.  After `bundle install` finishes setting up the dependencies, run `rake server`.
+4. Open a new terminal and fork and clone this repository.
+5. From the From the terminal in the cloned directory, run `npm install` or `yarn install`.
+6. Once the installations complete, run `npm start`.
+7. The browser user interface will open automatically.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## In the app:
+1.  Administrator level users (seeded, prior) can view a list of all tasks assigned to all users in the "Tasks" tab.  
+2.  Administrators and higher level users can create and delete tasks for all users in the "Tasks" tab.
+3.  Users with credentials lower than Administrator can ONLY view their own tasks and can not update the responsible party or delete the tasks in the "Tasks" tab.
+4. All users can access the search page and view the tasks and status of all other users but can not update ANY information while viewing in the "Search" tab. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Troubleshooting
+If an error occurs while running `rake server`, please run `bundle exec rake server`.  
 
-### `npm test`
+## References:
+- https://linuxhint.com/30_bash_script_examples/
+- https://www.cs.colby.edu/maxwell/courses/tutorials/maketutor/
+- https://www.rubyguides.com/2019/02/ruby-rake/
+- https://www.rubyguides.com/2018/09/rack-middleware/
+- https://www.rubyguides.com/
+- https://www.seancdavis.com/posts/how-to-write-a-custom-rake-task/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License & Copyright:
+ Copyright 2022 Kyrian Onwe, Flatiron School.  
+ 
+ Licensed under the [MIT LICENSE](LICENSE).
