@@ -30,10 +30,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
 
   function submitTask(e){
     e.preventDefault()
-    // console.log(us)
     const theTask = newTask
-    // console.log(us)
-    // console.log(theTask)
     let unit = us.find((u) => u.name === newTask.user_id)
     let unitId =  unit.id 
     theTask.user_id = unitId
