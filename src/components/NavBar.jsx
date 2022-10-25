@@ -8,9 +8,11 @@ function NavBar({ ss, scu, sss }) {
     <>
         {ss ? <div id='navbar'>
         <ul>
+          
             <li><Link to="/">Tasks</Link></li>
             <li><Link to="/search">Search</Link></li>
-        </ul> <SignOut scu={scu} sss={sss} ss={ss} />
+        </ul> 
+        <SignOut scu={scu} sss={sss} ss={ss} />
     </div> : null}
     </>
   )
