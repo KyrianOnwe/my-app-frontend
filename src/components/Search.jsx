@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FoundTodosContainer from './FoundTodosContainer';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function Search({ show }) {
 
@@ -18,12 +18,6 @@ function Search({ show }) {
        .then((s) => setUtodos(s))
 
   }
-
-  const hist = useNavigate()
-
-  if (!show){
-    hist('/')}
-
 
   return (
     <div>Search by user

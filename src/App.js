@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Search from './components/Search';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
 
 
@@ -56,7 +56,7 @@ function App() {
 
   return (
     
-      <Router>        
+      <>        
         <Header />
         <NavBar ss={showSite} scu={setcurrentUser} sss={setShowSite} />
         
@@ -66,7 +66,7 @@ function App() {
         </Routes> 
         <Footer/>     
              
-      </Router>       
+      </>       
   );
 }
 

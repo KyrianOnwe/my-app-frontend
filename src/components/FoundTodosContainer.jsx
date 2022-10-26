@@ -19,7 +19,7 @@ function FoundTodosContainer({ ftds }) {
             </tr>
           </thead>
           <tbody>
-            {ftds.map((f) => <FoundTodos key={f.id} task={f.task} dd={f.due_date} ass={f.assigned} stat={f.status} />)}
+            {ftds.map((f) => <FoundTodos key={f.id} task={f.task} dd={f.due_date} ass={f.assigned_by} stat={f.status} />)}
           </tbody>
         </table>
     </div>
