@@ -7,7 +7,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
     user_id: "",
     status: "Assigned",
     completed: false,
-    assigned_by: `${cu}`
+    assigned_by: ""
   })
 
   function useSetNewTask(e){    
@@ -24,7 +24,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
       user_id: "",
       status: "Assigned, not started",
       completed: false,
-      assigned_by: `${cu}`
+      assigned_by: ""
     })
     console.log(todos)
   }
@@ -35,7 +35,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
     let unit = us.find((u) => u.name === newTask.user_id)
     let unitId =  unit.id 
     theTask.user_id = unitId
-    theTask.assigned_by = cu
+    theTask.assigned_by = cu.name
     // console.log(theTask)
     fetch(("http://localhost:9292/todos"), {
       method: "POST", 
@@ -55,8 +55,13 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
         <form className="tasks-holder" onSubmit={submitTask}>
             <input type="text" name="task" placeholder="Task" value={newTask.task} onChange={useSetNewTask} />
             <input type="text" name="due_date" placeholder="Due Date" value={newTask.due_date} onChange={useSetNewTask} />
-            <input type="text" name="user_id" placeholder="Assigned to" value={newTask.user_id} onChange={useSetNewTask} />
+            {/* <input type="text" name="user_id" placeholder="Assigned to" value={newTask.user_id} onChange={useSetNewTask} /> */}
             {/* <input type="text" name="assigned_by" placeholder="Assigned by" defaultValue={cu} /> */}
+            <label>
+              <select name="user_id" value={newTask.user_id} onChange={useSetNewTask}>
+                {us.map((u) => <option value={u.name} key={u.name}>{u.name}</option>)}
+              </select>
+            </label>
             <button type="submit">Done!</button>
         </form>
     </div>
