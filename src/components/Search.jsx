@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FoundTodosContainer from './FoundTodosContainer';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Search({ show }) {
 
@@ -11,6 +11,17 @@ function Search({ show }) {
     setUser(e.target.value)
   }
 
+  const hist = useNavigate()
+
+  useEffect(() => {
+    if(!show){
+      hist("/")
+      setUser("")
+      setUtodos([])
+    }
+  }, [show, hist])
+  
+
   function subSearch(e){
     e.preventDefault()
     fetch(`http://localhost:9292/find_by_name/${user}`)
@@ -19,6 +30,9 @@ function Search({ show }) {
 
   }
 
+  
+
+  
   return (
     <div>Search by user
         <form onSubmit={subSearch}>
