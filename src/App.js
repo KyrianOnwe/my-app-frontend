@@ -15,6 +15,8 @@ function App() {
   const [todos, settodos] = useState([])
   const [currentUser, setcurrentUser] = useState({})
 
+  let role
+
   function usesetcurrentUser(signedin){
     setcurrentUser(users.find((u) => u.name === signedin))
   }
@@ -36,15 +38,9 @@ function App() {
 
   const us = [...users]
   const tds = [...todos]
-  let userInfo
-  let role
-  if(showSite){
-    userInfo = us.find((u) => u.name === currentUser)
-    role = userInfo.role
-  } else {
-    userInfo = {}
-    role = "none"
-  }
+
+  role = currentUser.role
+
   
 
   function handleComplete(id, data){
@@ -59,12 +55,12 @@ function App() {
     
       <>        
         <Header />
-        <NavBar ss={showSite} scu={setcurrentUser} sss={setShowSite} />
+        <NavBar ss={showSite} scu={setcurrentUser} sss={setShowSite} cu={currentUser} />
         
         <Routes>
           <Route path ="/" element={<SignIn show={useSetShowSite} classes={showSite} scu={usesetcurrentUser} us={users} tds={tds} uss={us} cu={currentUser} uui={handleComplete} handcom={handleComplete} std={settodos} todos={todos} rol={role} />} /> 
           <Route path= "/search" element={<Search show={showSite} setcurrentUser={setcurrentUser}/>} />
-          {currentUser.role === "Owner" ? <Route path="/newUser" element={<MakeUser users={us} setusers={setusers}/>} /> : null}  
+          <Route path="/newUser" element={<MakeUser users={us} setusers={setusers} role={role} show={showSite} />} />  
         </Routes> 
         <Footer/>     
              

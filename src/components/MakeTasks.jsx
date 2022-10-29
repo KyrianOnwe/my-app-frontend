@@ -51,7 +51,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
 
 
   return (
-    <div className={role === "Owner"|| role === "Adminstrator"? "tasks-div":"hidden"}>
+    <div className={role === "Owner"|| role === "Administrator"? "tasks-div":"hidden"}>
         <form className="tasks-holder" onSubmit={submitTask}>
             <input type="text" name="task" placeholder="Task" value={newTask.task} onChange={useSetNewTask} />
             <input type="text" name="due_date" placeholder="Due Date" value={newTask.due_date} onChange={useSetNewTask} />

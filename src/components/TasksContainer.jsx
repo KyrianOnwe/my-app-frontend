@@ -10,12 +10,12 @@ function TasksContainer({ tds, show, us, setT, role, cu, uui, handcom }) {
   let myList = []
   let shownList = []
 
-  if(role === "Owner" || role === "Adminstrator"){
+  if(role === "Owner" || role === "Administrator"){
     shownList = [...tds]
   } else if(role === "none"){
     shownList = [...tds]
   } else {
-    myList = tds.filter((t) => t.user_id === us.find((u) => u.name === cu).id)
+    myList = tds.filter((t) => t.user_id === cu.id)
     shownList = [...myList]
   }
 
@@ -34,7 +34,7 @@ function TasksContainer({ tds, show, us, setT, role, cu, uui, handcom }) {
               <th>Due date</th>
               <th>Assigned by</th>
               <th>Status</th>
-              {role === "Owner" || role === "Administraor" ? <th >Assigned to</th> : null}
+              {role === "Owner" || role === "Administrator" ? <th >Assigned to</th> : null}
               <th>Action</th>
             </tr>
           </thead>

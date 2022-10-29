@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function MakeUser({ users, setusers}) {
+function MakeUser({ users, setusers, role, show }) {
     const [user, setUser] = useState({
         name: "",
         role: "",
@@ -23,6 +24,13 @@ function MakeUser({ users, setusers}) {
             email: "",        
         })
     }
+    const hist = useNavigate()
+
+    useEffect(() => {
+        if(!show){
+          hist("/")
+        }
+      }, [show, hist])
 
     function submitUser(e){
         e.preventDefault()
@@ -43,7 +51,7 @@ function MakeUser({ users, setusers}) {
         <form className="tasks-holder" onSubmit={submitUser}>
             <input type="text" name="name" placeholder="User Name" value={user.name} onChange={createUser} />
             <input type="text" name="role" placeholder="User's Role" value={user.role} onChange={createUser} />
-            <input type="text" name="user_id" placeholder="Email address" value={user.email} onChange={createUser} />
+            <input type="text" name="email" placeholder="Email address" value={user.email} onChange={createUser} />
             {/* <input type="text" name="assigned_by" placeholder="Assigned by" defaultValue={cu} /> */}
             <button type="submit">Done!</button>
         </form>

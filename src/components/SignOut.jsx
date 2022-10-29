@@ -3,7 +3,7 @@ import React from 'react';
 function SignOut({ scu, sss }) {
     function handleSignOut(){
         sss(false)
-        scu("")
+        scu({})
     }
 
   return (
