@@ -6,16 +6,17 @@ import Header from './components/Header';
 import NavBar from './components/NavBar';
 import { Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer';
+import MakeUser from './components/MakeUser';
 
 
 function App() {
   const [showSite, setShowSite] = useState(false)
   const [users, setusers] = useState([])
   const [todos, settodos] = useState([])
-  const [currentUser, setcurrentUser] = useState("")
+  const [currentUser, setcurrentUser] = useState({})
 
   function usesetcurrentUser(signedin){
-    setcurrentUser(signedin)
+    setcurrentUser(users.find((u) => u.name === signedin))
   }
   function useSetShowSite(){
     setShowSite(!showSite)
@@ -62,7 +63,8 @@ function App() {
         
         <Routes>
           <Route path ="/" element={<SignIn show={useSetShowSite} classes={showSite} scu={usesetcurrentUser} us={users} tds={tds} uss={us} cu={currentUser} uui={handleComplete} handcom={handleComplete} std={settodos} todos={todos} rol={role} />} /> 
-          <Route path= "/search" element={<Search show={showSite} setcurrentUser={setcurrentUser}/>} />  
+          <Route path= "/search" element={<Search show={showSite} setcurrentUser={setcurrentUser}/>} />
+          {currentUser.role === "Owner" ? <Route path="/newUser" element={<MakeUser users={us} setusers={setusers}/>} /> : null}  
         </Routes> 
         <Footer/>     
              
