@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import FoundTodosContainer from './FoundTodosContainer';
 import { useNavigate } from 'react-router-dom';
+import Options from './Options';
 
-function Search({ show }) {
+function Search({ show, us }) {
 
   const [user, setUser] = useState("")
   const [utodos, setUtodos] = useState([])
@@ -36,7 +37,9 @@ function Search({ show }) {
   return (
     <div>Search by user
         <form onSubmit={subSearch}>
-          <input type="text" onChange={useSetUser} defaultValue={user}/>
+          <select name="user" onChange={useSetUser} placeholder={user} value={user}>
+            <Options us={us} />
+          </select>
           <button type="submit">Click</button>
         </form>
         {utodos.length === 0 ? "No Todos to show" : <FoundTodosContainer ftds={utodos}  />}

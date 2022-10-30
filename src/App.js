@@ -14,6 +14,7 @@ function App() {
   const [users, setusers] = useState([])
   const [todos, settodos] = useState([])
   const [currentUser, setcurrentUser] = useState({})
+  
 
   let role
 
@@ -59,7 +60,7 @@ function App() {
         
         <Routes>
           <Route path ="/" element={<SignIn show={useSetShowSite} classes={showSite} scu={usesetcurrentUser} us={users} tds={tds} uss={us} cu={currentUser} uui={handleComplete} handcom={handleComplete} std={settodos} todos={todos} rol={role} />} /> 
-          <Route path= "/search" element={<Search show={showSite} setcurrentUser={setcurrentUser}/>} />
+          <Route path= "/search" element={<Search show={showSite} setcurrentUser={setcurrentUser} us={us} />} />
           <Route path="/newUser" element={<MakeUser users={us} setusers={setusers} role={role} show={showSite} />} />  
         </Routes> 
         <Footer/>     

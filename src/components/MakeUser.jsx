@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function MakeUser({ users, setusers, role, show }) {
+function MakeUser({ users, setusers, role }) {
     const [user, setUser] = useState({
         name: "",
         role: "",
@@ -27,10 +27,10 @@ function MakeUser({ users, setusers, role, show }) {
     const hist = useNavigate()
 
     useEffect(() => {
-        if(!show){
+        if(role !== "Owner"){
           hist("/")
         }
-      }, [show, hist])
+      }, [role, hist])
 
     function submitUser(e){
         e.preventDefault()

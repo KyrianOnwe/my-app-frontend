@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Options from './Options';
 
 const MakeTasks = ({ cu, us, std, todos, role }) => {
   const [newTask, setNewTask] = useState({
@@ -59,7 +60,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
             {/* <input type="text" name="assigned_by" placeholder="Assigned by" defaultValue={cu} /> */}
             <label>
               <select name="user_id" value={newTask.user_id} onChange={useSetNewTask}>
-                {us.map((u) => <option value={u.name} key={u.name}>{u.name}</option>)}
+                <Options us={us}/>
               </select>
             </label>
             <button type="submit">Done!</button>

@@ -4,9 +4,6 @@ import FoundTodos from './FoundTodos';
 
 function FoundTodosContainer({ ftds }) {
 
-  console.log(ftds)
-
-
   return (
     <div className='tasks-container'>
         <table>
