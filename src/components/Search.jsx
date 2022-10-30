@@ -24,7 +24,7 @@ function Search({ show }) {
 
   function subSearch(e){
     e.preventDefault()
-    fetch(`http://localhost:9292/find_by_name/${user}`)
+    fetch(`http://localhost:9292/users/find_by/${user}`)
        .then((r) => r.json())
        .then((s) => setUtodos(s))
 

@@ -34,7 +34,7 @@ function MakeUser({ users, setusers, role, show }) {
 
     function submitUser(e){
         e.preventDefault()
-        fetch(("http://localhost:9292/users"), {
+        fetch(("http://localhost:9292/users/post"), {
         method: "POST", 
         headers: {
           "Content-Type": "application/json"

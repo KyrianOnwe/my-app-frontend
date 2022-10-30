@@ -16,8 +16,8 @@ This app has been created for use with a team where accountability for performan
 3.  After `bundle install` finishes setting up the dependencies, run `rake server`.
 4. Open a new terminal and fork and clone [this](https://github.com/KyrianOnwe/my-app-frontend) repository.
 5. From the From the terminal in the cloned directory, run `npm install` or `yarn install`.
-6. Once the installations complete, run `npm start`.
-7. The browser based user interface will open automatically.
+6. Once the installations complete, run`yarn start` or `npm start`.
+7. The browser based user interface will open automatically in the default browser.
 
 ## In the app:
 1.  Administrator level users (seeded, prior) can view a list of all tasks assigned to all users in the "Tasks" tab.  
