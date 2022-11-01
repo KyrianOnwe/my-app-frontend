@@ -39,7 +39,7 @@ function App() {
         
         <Routes>
           <Route path ="/" element={<MakeTasks us={us} tds={tds} std={settodos} />} /> 
-          <Route path= "/search" element={<Search />} />
+          <Route path= "/search" element={<Search us={us}/>} />
           <Route path="/newUser" element={<MakeUser users={us} setusers={setusers} />} />  
         </Routes> 
         <Footer/>     
