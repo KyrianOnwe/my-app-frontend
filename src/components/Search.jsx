@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import FoundTodosContainer from './FoundTodosContainer';
-import { useNavigate } from 'react-router-dom';
 import Options from './Options';
 
-function Search({ show, us }) {
+function Search({ us }) {
 
   const [user, setUser] = useState("")
   const [utodos, setUtodos] = useState([])
@@ -12,15 +11,7 @@ function Search({ show, us }) {
     setUser(e.target.value)
   }
 
-  const hist = useNavigate()
 
-  useEffect(() => {
-    if(!show){
-      hist("/")
-      setUser("")
-      setUtodos([])
-    }
-  }, [show, hist])
   
 
   function subSearch(e){

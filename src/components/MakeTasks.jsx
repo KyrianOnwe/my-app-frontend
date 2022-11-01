@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Options from './Options';
+import TasksContainer from './TasksContainer';
 
-const MakeTasks = ({ cu, us, std, todos, role }) => {
+const MakeTasks = ({ us, std, tds }) => {
   const [newTask, setNewTask] = useState({
     task: "",
     due_date: "",
@@ -27,37 +28,28 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
       completed: false,
       assigned_by: ""
     })
-    console.log(todos)
   }
 
   function submitTask(e){
-    e.preventDefault()
-    const theTask = newTask
-    let unit = us.find((u) => u.name === newTask.user_id)
-    let unitId =  unit.id 
-    theTask.user_id = unitId
-    theTask.assigned_by = cu.name
-    // console.log(theTask)
+    e.preventDefault()    
     fetch(("http://localhost:9292/todos"), {
       method: "POST", 
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(theTask)
+      body: JSON.stringify(newTask)
     })
       .then((r) => r.json())
-      .then((data) => std([...todos, data]))
+      .then((data) => std(data))
       .then(() => resetTaskAdder())
   }
 
 
   return (
-    <div className={role === "Owner"|| role === "Administrator"? "tasks-div":"hidden"}>
+    <div>
         <form className="tasks-holder" onSubmit={submitTask}>
             <input type="text" name="task" placeholder="Task" value={newTask.task} onChange={useSetNewTask} />
             <input type="text" name="due_date" placeholder="Due Date" value={newTask.due_date} onChange={useSetNewTask} />
-            {/* <input type="text" name="user_id" placeholder="Assigned to" value={newTask.user_id} onChange={useSetNewTask} /> */}
-            {/* <input type="text" name="assigned_by" placeholder="Assigned by" defaultValue={cu} /> */}
             <label>
               <select name="user_id" value={newTask.user_id} onChange={useSetNewTask}>
                 <Options us={us}/>
@@ -65,6 +57,7 @@ const MakeTasks = ({ cu, us, std, todos, role }) => {
             </label>
             <button type="submit">Done!</button>
         </form>
+        <TasksContainer tds={tds} us={us} setT={std} />
     </div>
   )
 }

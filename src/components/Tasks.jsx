@@ -1,20 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 
-function Tasks({ id, task, dd, ab, status, us, uid, delT, role, comp, handcom, uui  }) {
-
-  const [status2, setstatus2] = useState(status)
-  function useSetStatus2(e){
-    setstatus2(e.target.value)
-  }
-  
-  const [compl, setCompl] = useState(comp)
-
-  function useSetCompl(){
-    setCompl(!comp)
-    setstatus2("Done-finished!")
-    completed()
-  }
+function Tasks({ id, task, dd, ab, setT, status  }) {
 
   function completed(){
     fetch(`http://localhost:9292/todos/completed/${id}`, {
@@ -23,65 +10,23 @@ function Tasks({ id, task, dd, ab, status, us, uid, delT, role, comp, handcom, u
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        completed: `${compl}`,
-        status: `${status2}`
+        completed: true,
+        status: `Done-Completed.`
       }),
     })
-      .then((r) => r.json())
-      .then((data) => handcom(id, data))
+    .then((r) => r.json())
+    .then((data) => setT(data))
   }
-  let setUser = {}
-  setUser = us.find((u) => u.id === uid) 
   
-  const userSet = setUser.name
-
-  const [assigned, setAssigned] = useState(`${userSet}`)
-
-  function handleChange(e){
-    setAssigned(e.target.value)
-  }
-
-  function handleStatusSubmit(e){
-    e.preventDefault()
-    fetch(`http://localhost:9292/todos/status/${id}`, {
-      method: 'PATCH',
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        status: `${status2}`
-      }),
-    })
-      .then((r) => r.json())
-      .then((data) => handcom(id, data))
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const uid = us.find((u) => u.name.toLowerCase() === assigned.toLowerCase())
-    const ans = uid.id
-    fetch(`http://localhost:9292/todos/${id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: `${ans}`
-      }),
-    })
-      .then((r) => r.json())
-      .then((ret) => handcom(id, ret));
-  }
-
   function handleDelete(){
-    fetch(`http://localhost:9292/todos/${id}`,{method: "DELETE"});
-    delT(id)
+    fetch(`http://localhost:9292/todos/${id}`,{method: "DELETE"})
+      .then((r) => r.json())
+      .then((data) => setT(data))
   }
   
 
   return (
-    <tr className={compl ? "complete" : null}>
-      <td className='hidden'>{id}</td>
+    <tr>
       <td>
         {task}
       </td>
@@ -92,21 +37,10 @@ function Tasks({ id, task, dd, ab, status, us, uid, delT, role, comp, handcom, u
         {ab}
       </td>
       <td>
-        <input type='text' onChange={useSetStatus2} name='status2' placeholder='status2' value={status2}/><button onClick={handleStatusSubmit}>Done</button>
+        {status}       
       </td>
-      {
-        role === "Owner" || role === "Administrator" ? 
-        <td >
-          <input type='text' placeholder={assigned}value={assigned} onChange={handleChange} />
-          <button onClick={handleSubmit}>
-            Done
-          </button>
-        </td> 
-        : null
-      }
 
-      <td><button onClick={useSetCompl}>Complete</button><button className={role === "Owner" || role === 
-      "Administrator" ? "delete-btn" : "hidden"} onClick={handleDelete}>Delete</button></td>
+      <td><button onClick={completed}>Complete</button><button onClick={handleDelete}>Delete</button></td>
     </tr>
 
   )
