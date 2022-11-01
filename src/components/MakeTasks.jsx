@@ -44,7 +44,6 @@ const MakeTasks = ({ us, std, tds }) => {
       .then(() => resetTaskAdder())
   }
 
-  console.log(us)
   return (
     <div>
         <form className="tasks-holder" onSubmit={submitTask}>
