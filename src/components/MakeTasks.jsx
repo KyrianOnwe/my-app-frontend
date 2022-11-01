@@ -55,6 +55,7 @@ const MakeTasks = ({ us, std, tds }) => {
                 <Options us={us}/>
               </select>
             </label>
+            <input type="text" name="assigned_by" placeholder="Assigner" value={newTask.assigned_by} onChange={useSetNewTask} />
             <button type="submit">Done!</button>
         </form>
         <TasksContainer tds={tds} us={us} setT={std} />
