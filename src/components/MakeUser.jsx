@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-function MakeUser({ users, setusers, role }) {
+function MakeUser({ users, setusers }) {
     const [user, setUser] = useState({
         name: "",
         role: "",
@@ -23,14 +22,9 @@ function MakeUser({ users, setusers, role }) {
             password: "Yoyoyo",
             email: "",        
         })
-    }
-    const hist = useNavigate()
+      }
 
-    useEffect(() => {
-        if(role !== "Owner"){
-          hist("/")
-        }
-      }, [role, hist])
+
 
     function submitUser(e){
         e.preventDefault()
@@ -42,17 +36,18 @@ function MakeUser({ users, setusers, role }) {
         body: JSON.stringify(user)
       })
         .then((r) => r.json())
-        .then((data) => setusers([...users, data]))
+        .then((data) => {
+          setusers([...users, data])
+          alert(`${data.name} has been added!`)})
         .then(() => resetUserForm())
     }
 
   return (
-    <div className={role === "Owner"|| role === "Adminstrator"? "tasks-div":"hidden"}>        
+    <div>        
         <form className="tasks-holder" onSubmit={submitUser}>
             <input type="text" name="name" placeholder="User Name" value={user.name} onChange={createUser} />
             <input type="text" name="role" placeholder="User's Role" value={user.role} onChange={createUser} />
             <input type="text" name="email" placeholder="Email address" value={user.email} onChange={createUser} />
-            {/* <input type="text" name="assigned_by" placeholder="Assigned by" defaultValue={cu} /> */}
             <button type="submit">Done!</button>
         </form>
 </div>

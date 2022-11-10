@@ -1,10 +1,11 @@
 import React from 'react'
 
 function Options({ us }) {
+  const empty = {name: "nada", id: "nadanada"}
   return (
     <>
-         <option value="nada" key="nadanada">Select a user</option>
-         {us.map((u) => <option value={u.name} key={u.name}>{u.name}</option>)}
+         <option value={empty.name} key={empty.id} id={empty.id}>Select a user</option>
+         {us.map((u) => <option value={u.name} key={u.name} id={u.id}>{u.name}</option>)}
     </>
   )
 }

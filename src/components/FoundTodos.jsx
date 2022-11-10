@@ -1,6 +1,27 @@
 import React from 'react'
 
-function FoundTodos({ task, dd, ass, stat }) {
+function FoundTodos({ id, task, dd, ab, status, handD, handC, ftds }) {
+    function completed(){
+        fetch(`http://localhost:9292/todos/completed/${id}`, {
+          method: 'PATCH',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            completed: true,
+            status: `Done-Completed.`
+          }),
+        })
+        .then((r) => r.json())
+        .then((data) => handC(data))
+      }
+      
+      function handleDelete(){
+        fetch(`http://localhost:9292/todos/${id}`,{method: "DELETE"})
+          .then((r) => r.json())
+          .then(() => handD(id))
+      }
+
   return (
     <tr>            
         <td>
@@ -10,11 +31,13 @@ function FoundTodos({ task, dd, ass, stat }) {
             {dd}
         </td>
         <td>
-            {ass}
+            {ab}
         </td>
         <td>
-            {stat}                
-        </td>      
+            {status}                
+        </td>
+
+        <td><button onClick={completed}>Complete</button><button onClick={handleDelete}>Delete</button></td>      
     </tr>
 
  

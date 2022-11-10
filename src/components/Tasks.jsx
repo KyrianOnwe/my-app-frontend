@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-function Tasks({ id, task, dd, ab, setT, status  }) {
+function Tasks({ id, task, dd, ab, status, handD, handC  }) {
 
   function completed(){
     fetch(`http://localhost:9292/todos/completed/${id}`, {
@@ -15,13 +15,13 @@ function Tasks({ id, task, dd, ab, setT, status  }) {
       }),
     })
     .then((r) => r.json())
-    .then((data) => setT(data))
+    .then((data) => handC(data))
   }
   
   function handleDelete(){
     fetch(`http://localhost:9292/todos/${id}`,{method: "DELETE"})
       .then((r) => r.json())
-      .then((data) => setT(data))
+      .then(() => handD(id))
   }
   
 

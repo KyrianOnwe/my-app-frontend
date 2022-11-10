@@ -7,10 +7,10 @@ function NavBar() {
     <>
         <div id='navbar'>
         <ul>
-          
-            <li><Link to="/">Tasks</Link></li>
-            <li><Link to="/search">Search</Link></li>
-            <li><Link to="/newUser">Create a new user</Link></li> 
+            <li><Link to="/">Home</Link></li>          
+            <li><Link to="/todos">Tasks</Link></li>
+            <li><Link to="/todos/search">Search</Link></li>
+            <li><Link to="/user/new">Add a user</Link></li> 
         </ul>
         
     </div>

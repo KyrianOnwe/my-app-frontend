@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Options from './Options';
 import TasksContainer from './TasksContainer';
 
-const MakeTasks = ({ us, std, tds }) => {
+const MakeTasks = ({ us, std, tds, handD, handC, handM }) => {
   const [newTask, setNewTask] = useState({
     task: "",
     due_date: "",
@@ -40,7 +40,7 @@ const MakeTasks = ({ us, std, tds }) => {
       body: JSON.stringify(newTask)
     })
       .then((r) => r.json())
-      .then((data) => std(data))
+      .then((data) => handM(data))
       .then(() => resetTaskAdder())
   }
 
@@ -57,7 +57,7 @@ const MakeTasks = ({ us, std, tds }) => {
             <input type="text" name="assigned_by" placeholder="Assigner" value={newTask.assigned_by} onChange={useSetNewTask} />
             <button type="submit">Done!</button>
         </form>
-        <TasksContainer tds={tds} us={us} setT={std} />
+        <TasksContainer tds={tds} us={us} setT={std} handD={handD} handC={handC} />
     </div>
   )
 }
